@@ -9,6 +9,7 @@
     "clean": "turbo clean"
   },
   "devDependencies": {
+    "next": "^15.3.0",
     "turbo": "^2.5.0",
     "typescript": "^5.7.0"
   }
