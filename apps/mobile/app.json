@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Fandom Galaxy",
+    "slug": "fandom-galaxy",
+    "version": "1.0.0",
+    "scheme": "fandom-galaxy",
+    "platforms": ["ios", "android"],
+    "newArchEnabled": true,
+    "ios": {
+      "bundleIdentifier": "com.fandom.galaxy"
+    },
+    "android": {
+      "package": "com.fandom.galaxy"
+    },
+    "plugins": ["expo-router"]
+  }
+}
