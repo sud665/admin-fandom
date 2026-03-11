@@ -4,13 +4,16 @@ export interface User {
   id: string
   displayName: string
   email: string
+  photoURL?: string
   tier: UserTier
-  totalPop: number
+  popBalance: number
+  totalPopEarned: number
   totalSteps: number
   totalFeeds: number
   campaignCount: number
   isPremium: boolean
   createdAt: Date
+  lastLoginAt?: Date
 }
 
 export interface WalletTransaction {

@@ -44,7 +44,7 @@ export function IdCard({ user }: IdCardProps) {
         </div>
         <div className="mt-6">
           <p className="text-xs text-[var(--text-secondary)]">Total POP</p>
-          <p className="text-3xl font-bold text-[var(--accent-purple)]">{user.totalPop.toLocaleString()}</p>
+          <p className="text-3xl font-bold text-[var(--accent-purple)]">{user.popBalance.toLocaleString()}</p>
         </div>
         <div className="mt-4 text-xs text-[var(--text-secondary)]">
           Member since {user.createdAt.toLocaleDateString()}

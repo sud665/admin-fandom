@@ -7,6 +7,7 @@ export interface Planet {
   orbitIndex: number
   color: string
   isEclipsed: boolean
+  eclipseStartedAt: Date | null
   eclipseEndsAt: Date | null
 }
 
