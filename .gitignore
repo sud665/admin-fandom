@@ -7,3 +7,10 @@ dist
 .env.local
 *.tsbuildinfo
 .vercel
+
+# Firebase
+GoogleService-Info.plist
+google-services.json
+
+# Environment
+apps/mobile/.env
