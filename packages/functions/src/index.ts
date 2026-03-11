@@ -2,4 +2,4 @@ import { initializeApp } from 'firebase-admin/app'
 
 initializeApp()
 
-export {}
+export { onUserCreate } from './on-user-create'
