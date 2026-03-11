@@ -87,9 +87,9 @@ const sunFragmentShader = `
   void main() {
     // Animated noise on sphere surface
     vec3 pos = vPosition * 2.0;
-    float noise1 = fbm(pos + uTime * 0.15);
-    float noise2 = fbm(pos * 1.5 - uTime * 0.1 + 100.0);
-    float noise3 = fbm(pos * 3.0 + uTime * 0.08 + 200.0);
+    float noise1 = fbm(pos + uTime * 0.03);
+    float noise2 = fbm(pos * 1.5 - uTime * 0.02 + 100.0);
+    float noise3 = fbm(pos * 3.0 + uTime * 0.015 + 200.0);
 
     // Color gradient: dark orange core → bright yellow → white hot spots
     vec3 darkOrange = vec3(0.8, 0.3, 0.0);

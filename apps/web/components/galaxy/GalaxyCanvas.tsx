@@ -1,7 +1,7 @@
 'use client'
 
 import { Canvas } from '@react-three/fiber'
-import { Bloom, EffectComposer } from '@react-three/postprocessing'
+// import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { useGalaxyStore } from '@/store/galaxy-store'
 import { StarField } from './StarField'
 import { Sun } from './Sun'
@@ -23,9 +23,7 @@ export function GalaxyCanvas() {
         <StarField />
         <Sun />
         <OrbitalSystem planets={planets} />
-        <EffectComposer>
-          <Bloom intensity={0.8} luminanceThreshold={0.8} luminanceSmoothing={0.9} mipmapBlur />
-        </EffectComposer>
+{/* Bloom 제거 — 태양 셰이더와 충돌하여 깜빡임 유발 */}
       </Canvas>
     </div>
   )
