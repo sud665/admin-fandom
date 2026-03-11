@@ -1,7 +1,7 @@
-import { auth } from 'firebase-functions/v2'
+import * as functionsV1 from 'firebase-functions/v1'
 import { getFirestore } from 'firebase-admin/firestore'
 
-export const onUserCreate = auth.user().onCreate(async (user) => {
+export const onUserCreate = functionsV1.auth.user().onCreate(async (user) => {
   const db = getFirestore()
 
   await db.collection('users').doc(user.uid).set({
