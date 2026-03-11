@@ -24,7 +24,7 @@ export function GalaxyCanvas() {
         <Sun />
         <OrbitalSystem planets={planets} />
         <EffectComposer>
-          <Bloom intensity={1.5} luminanceThreshold={0.6} luminanceSmoothing={0.9} mipmapBlur />
+          <Bloom intensity={0.8} luminanceThreshold={0.8} luminanceSmoothing={0.9} mipmapBlur />
         </EffectComposer>
       </Canvas>
     </div>

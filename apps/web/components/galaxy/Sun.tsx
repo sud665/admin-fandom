@@ -107,8 +107,8 @@ const sunFragmentShader = `
     fresnel = pow(max(fresnel, 0.0), 0.4);
     color *= mix(0.4, 1.0, fresnel);
 
-    // Bright emissive
-    gl_FragColor = vec4(color * 2.5, 1.0);
+    // Emissive (controlled brightness)
+    gl_FragColor = vec4(color * 1.8, 1.0);
   }
 `
 
@@ -130,9 +130,9 @@ const coronaFragmentShader = `
 
   void main() {
     float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.5);
-    float flicker = 0.8 + 0.2 * sin(uTime * 3.0 + vNormal.x * 10.0);
-    vec3 color = vec3(1.0, 0.6, 0.1) * intensity * flicker * 2.0;
-    gl_FragColor = vec4(color, intensity * 0.7);
+    float flicker = 0.95 + 0.05 * sin(uTime * 0.5 + vNormal.x * 5.0);
+    vec3 color = vec3(1.0, 0.6, 0.1) * intensity * flicker * 1.2;
+    gl_FragColor = vec4(color, intensity * 0.5);
   }
 `
 
@@ -205,7 +205,7 @@ export function Sun() {
       </mesh>
 
       {/* Point light */}
-      <pointLight color="#ffaa00" intensity={80} distance={120} />
+      <pointLight color="#ffaa00" intensity={40} distance={100} />
     </group>
   )
 }
