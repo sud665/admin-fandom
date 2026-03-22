@@ -37,9 +37,9 @@ export default function HeroSection() {
       </div>
 
       {/* Main content — two columns on desktop */}
-      <div className="relative z-10 flex flex-1 items-center px-8 md:px-16 lg:px-24">
+      <div className="relative z-10 flex flex-1 items-center justify-center gap-12 px-8 xl:gap-20">
         {/* Left — text */}
-        <div className="flex-1">
+        <div className="max-w-xl">
           {/* Eyebrow */}
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-8 bg-[#00D4AA]" />
