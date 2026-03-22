@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const tabs = [
-  { href: '/', label: 'GALAXY', icon: '🌌' },
+  { href: '/galaxy', label: 'GALAXY', icon: '🌌' },
   { href: '/home', label: 'HOME', icon: '⚡' },
   { href: '/archive', label: 'ARCHIVE', icon: '📦' },
   { href: '/kinside', label: 'K-INSIDE', icon: '💬' },
@@ -18,7 +18,7 @@ export function BottomNav() {
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[var(--bg-secondary)]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-md">
         {tabs.map((tab) => {
-          const isActive = tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href)
+          const isActive = pathname === tab.href || pathname.startsWith(tab.href + '/')
           return (
             <Link
               key={tab.href}
