@@ -85,33 +85,38 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — Live app preview window */}
-        <div className="hidden lg:block lg:w-[480px] xl:w-[560px]">
-          <div className="relative">
+        {/* Right — Tilted phone-style live preview */}
+        <div className="hidden lg:block">
+          <div className="relative" style={{ transform: 'rotate(-6deg) translateY(10px)' }}>
             {/* Glow */}
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-[#7B2FF2]/15 via-[#EC4899]/10 to-transparent blur-3xl" />
+            <div className="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-br from-[#7B2FF2]/20 via-[#EC4899]/10 to-transparent blur-3xl" />
 
-            {/* Window frame */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl shadow-purple-500/10 backdrop-blur-sm">
-              {/* Title bar */}
-              <div className="flex items-center gap-2 border-b border-white/5 px-4 py-2.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span className="ml-3 text-[10px] text-white/25">fandom-galaxy.app</span>
+            {/* Phone frame — tall & narrow */}
+            <div className="relative w-[300px] overflow-hidden rounded-[2rem] border-[2px] border-white/10 bg-black shadow-2xl shadow-purple-500/10 xl:w-[320px]">
+              {/* Status bar */}
+              <div className="flex items-center justify-between bg-black px-5 pb-1 pt-3">
+                <span className="text-[10px] font-medium text-white/40">9:41</span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] text-white/30">●●●</span>
+                </div>
               </div>
 
-              {/* iframe */}
+              {/* iframe — tall ratio */}
               <iframe
                 src="/galaxy"
                 title="Fandom Galaxy 앱 미리보기"
-                className="h-[400px] w-full border-0 xl:h-[460px]"
+                className="h-[560px] w-full border-0 xl:h-[620px]"
                 style={{ pointerEvents: 'none' }}
               />
+
+              {/* Home indicator */}
+              <div className="flex justify-center bg-black pb-2 pt-1">
+                <span className="h-1 w-28 rounded-full bg-white/20" />
+              </div>
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -left-6 bottom-12 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
+            <div className="absolute -left-8 bottom-24 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl" style={{ transform: 'rotate(6deg)' }}>
               <p className="text-xs font-semibold text-white">⚡ 3D Galaxy</p>
               <p className="text-[10px] text-white/40">실시간 인터랙티브</p>
             </div>
