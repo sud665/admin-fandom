@@ -87,7 +87,7 @@ export default function HeroSection() {
 
         {/* Right — Tilted phone-style live preview */}
         <div className="hidden lg:block">
-          <div className="relative" style={{ transform: 'rotate(-6deg) translateY(10px)' }}>
+          <div className="relative" style={{ transform: 'rotate(6deg) translateY(10px)' }}>
             {/* Glow */}
             <div className="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-br from-[#7B2FF2]/20 via-[#EC4899]/10 to-transparent blur-3xl" />
 
@@ -116,7 +116,7 @@ export default function HeroSection() {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -left-8 bottom-24 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl" style={{ transform: 'rotate(6deg)' }}>
+            <div className="absolute -left-8 bottom-24 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl" style={{ transform: 'rotate(-6deg)' }}>
               <p className="text-xs font-semibold text-white">⚡ 3D Galaxy</p>
               <p className="text-[10px] text-white/40">실시간 인터랙티브</p>
             </div>
