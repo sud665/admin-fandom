@@ -93,7 +93,7 @@ export default function SocialProof() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-reveal bg-gradient-to-b from-[var(--bg-primary,#0a0a0f)] to-[var(--bg-secondary,#12121a)] py-24 sm:py-32"
+      className="scroll-reveal flex h-dvh snap-start snap-always items-center bg-gradient-to-b from-[var(--bg-primary,#0a0a0f)] to-[var(--bg-secondary,#12121a)]"
     >
       <div ref={innerRef} className="mx-auto max-w-5xl px-6">
         <div className="grid grid-cols-2 gap-y-12 md:grid-cols-4 md:gap-y-0">

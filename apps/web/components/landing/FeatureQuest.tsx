@@ -15,7 +15,7 @@ export default function FeatureQuest() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-reveal relative flex min-h-dvh items-center overflow-hidden"
+      className="scroll-reveal relative flex h-dvh snap-start snap-always items-center overflow-hidden"
     >
       {/* Background Image */}
       <Image

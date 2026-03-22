@@ -8,13 +8,16 @@ export default function CTASection() {
   const sectionRef = useScrollReveal<HTMLElement>()
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const container = document.querySelector('main')
+    if (container) {
+      container.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   return (
     <section
       ref={sectionRef}
-      className="scroll-reveal relative flex min-h-dvh items-center justify-center overflow-hidden"
+      className="scroll-reveal relative flex h-dvh snap-start snap-always items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
       <Image

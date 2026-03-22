@@ -9,7 +9,7 @@ import Footer from '@/components/landing/Footer'
 
 export default function LandingPage() {
   return (
-    <main>
+    <main className="h-dvh snap-y snap-mandatory overflow-y-auto">
       <HeroSection />
       <FeatureGalaxy />
       <FeatureQuest />

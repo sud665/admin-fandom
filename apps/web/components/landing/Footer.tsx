@@ -41,7 +41,7 @@ function SocialIcon({ path, label }: { path: string; label: string }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#08080d] px-6 pb-8 pt-16 sm:px-10 md:px-16 lg:px-24">
+    <footer className="flex h-dvh snap-start snap-always flex-col justify-end bg-[#08080d] px-6 pb-8 pt-16 sm:px-10 md:px-16 lg:px-24">
       <div className="mx-auto max-w-6xl">
         {/* Top */}
         <div className="mb-12 flex flex-col gap-10 md:flex-row md:justify-between">

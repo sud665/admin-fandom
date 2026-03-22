@@ -10,7 +10,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-reveal relative flex min-h-dvh flex-col items-center justify-center overflow-hidden"
+      className="scroll-reveal relative flex h-dvh snap-start snap-always flex-col items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
       <Image
