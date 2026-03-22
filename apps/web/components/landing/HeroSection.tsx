@@ -85,39 +85,35 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — Phone mockup with live app iframe */}
-        <div className="hidden lg:block">
+        {/* Right — Live app preview window */}
+        <div className="hidden lg:block lg:w-[480px] xl:w-[560px]">
           <div className="relative">
-            {/* Glow behind phone */}
-            <div className="absolute -inset-8 rounded-[3rem] bg-gradient-to-br from-[#7B2FF2]/20 via-[#EC4899]/10 to-transparent blur-2xl" />
+            {/* Glow */}
+            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-[#7B2FF2]/15 via-[#EC4899]/10 to-transparent blur-3xl" />
 
-            {/* Phone frame */}
-            <div className="relative h-[580px] w-[280px] overflow-hidden rounded-[2.5rem] border-[3px] border-white/15 bg-black shadow-2xl shadow-purple-500/10">
-              {/* Notch */}
-              <div className="absolute left-1/2 top-2 z-20 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
+            {/* Window frame */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl shadow-purple-500/10 backdrop-blur-sm">
+              {/* Title bar */}
+              <div className="flex items-center gap-2 border-b border-white/5 px-4 py-2.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+                <span className="ml-3 text-[10px] text-white/25">fandom-galaxy.app</span>
+              </div>
 
-              {/* iframe — shows the actual Galaxy page */}
+              {/* iframe */}
               <iframe
                 src="/galaxy"
                 title="Fandom Galaxy 앱 미리보기"
-                className="h-full w-full border-0"
+                className="h-[400px] w-full border-0 xl:h-[460px]"
                 style={{ pointerEvents: 'none' }}
               />
-
-              {/* Subtle reflection overlay */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent" />
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -left-12 bottom-20 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
+            <div className="absolute -left-6 bottom-12 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
               <p className="text-xs font-semibold text-white">⚡ 3D Galaxy</p>
               <p className="text-[10px] text-white/40">실시간 인터랙티브</p>
-            </div>
-
-            {/* Floating badge top-right */}
-            <div className="absolute -right-8 top-16 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
-              <p className="text-xs font-semibold text-white">🪐 10K+</p>
-              <p className="text-[10px] text-white/40">활성 팬덤</p>
             </div>
           </div>
         </div>
