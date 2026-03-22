@@ -63,3 +63,25 @@ body {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+/* Bento grid — mobile 2x2, desktop asymmetric */
+.bento-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "galaxy quest"
+    "archive kinside";
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    gap: 16px;
+    grid-template-columns: 2fr 1fr 1.2fr;
+    grid-template-rows: 3fr 2fr;
+    grid-template-areas:
+      "galaxy quest kinside"
+      "galaxy archive kinside";
+  }
+}

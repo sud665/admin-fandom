@@ -11,7 +11,7 @@ const cards = [
     badge: 'Galaxy',
     badgeColor: '#7B2FF2',
     image: 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=800&q=80',
-    span: 'md:row-span-2',
+    area: 'galaxy',
   },
   {
     title: '매일 새로운 퀘스트',
@@ -19,7 +19,7 @@ const cards = [
     badge: 'Quest',
     badgeColor: '#FF2D78',
     image: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80',
-    span: '',
+    area: 'quest',
   },
   {
     title: '팬덤의 기록',
@@ -27,7 +27,7 @@ const cards = [
     badge: 'Archive',
     badgeColor: '#00D4AA',
     image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800&q=80',
-    span: '',
+    area: 'archive',
   },
   {
     title: '지식 커뮤니티',
@@ -35,7 +35,7 @@ const cards = [
     badge: 'K-INSIDE',
     badgeColor: '#00D4AA',
     image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80',
-    span: 'md:row-span-2',
+    area: 'kinside',
   },
 ]
 
@@ -61,8 +61,8 @@ function TiltCard({ card }: { card: (typeof cards)[number] }) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative overflow-hidden rounded-2xl border border-white/10 transition-transform duration-300 ease-out ${card.span}`}
-      style={{ transformStyle: 'preserve-3d' }}
+      className="group relative overflow-hidden rounded-2xl border border-white/10 transition-transform duration-300 ease-out"
+      style={{ gridArea: card.area, transformStyle: 'preserve-3d' } as React.CSSProperties}
     >
       <Image
         src={card.image}
@@ -118,8 +118,8 @@ export default function BentoGrid() {
           </h2>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid h-[60vh] max-h-[500px] grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2 md:gap-4">
+        {/* Bento Grid — asymmetric tile layout */}
+        <div className="bento-grid h-[55vh] max-h-[520px]">
           {cards.map((card) => (
             <TiltCard key={card.badge} card={card} />
           ))}
