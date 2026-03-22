@@ -1,25 +1,23 @@
-'use client'
+import HeroSection from '@/components/landing/HeroSection'
+import FeatureGalaxy from '@/components/landing/FeatureGalaxy'
+import FeatureQuest from '@/components/landing/FeatureQuest'
+import FeatureArchive from '@/components/landing/FeatureArchive'
+import FeatureCommunity from '@/components/landing/FeatureCommunity'
+import SocialProof from '@/components/landing/SocialProof'
+import CTASection from '@/components/landing/CTASection'
+import Footer from '@/components/landing/Footer'
 
-import dynamic from 'next/dynamic'
-import { AppShell } from '@/components/layout/AppShell'
-import { EclipseOverlay } from '@/components/galaxy/EclipseOverlay'
-import { BoostFlash } from '@/components/galaxy/BoostFlash'
-import { DemoControls } from '@/components/galaxy/DemoControls'
-
-const GalaxyCanvas = dynamic(
-  () => import('@/components/galaxy/GalaxyCanvas').then((m) => m.GalaxyCanvas),
-  { ssr: false }
-)
-
-export default function GalaxyPage() {
+export default function LandingPage() {
   return (
-    <AppShell>
-      <div className="relative h-dvh w-full">
-        <GalaxyCanvas />
-        <EclipseOverlay />
-        <BoostFlash />
-        <DemoControls />
-      </div>
-    </AppShell>
+    <main>
+      <HeroSection />
+      <FeatureGalaxy />
+      <FeatureQuest />
+      <FeatureArchive />
+      <FeatureCommunity />
+      <SocialProof />
+      <CTASection />
+      <Footer />
+    </main>
   )
 }
