@@ -2,42 +2,36 @@
 
 import { useEffect, useState } from 'react'
 
-const labels = ['Hero', 'Galaxy', 'Quest', 'Archive', 'Community', 'Stats', 'Start']
+const navItems = ['Home', 'Features', 'Stats', 'Start']
 
-export default function PageIndicator() {
+export default function FloatingNav() {
   const [active, setActive] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const main = document.querySelector('main')
     if (!main) return
 
-    const sections = main.querySelectorAll(':scope > section')
+    const onScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = main
+      setScrollProgress(scrollTop / (scrollHeight - clientHeight))
+      setVisible(scrollTop > clientHeight * 0.5)
 
-    // Show indicator after first scroll
-    const handleScroll = () => {
-      if (!visible && main.scrollTop > 100) setVisible(true)
-
-      // Find which section is most visible
-      const mainRect = main.getBoundingClientRect()
+      // Detect active section
+      const sections = main.querySelectorAll(':scope > section')
       let closest = 0
-      let minDistance = Infinity
-
-      sections.forEach((section, i) => {
-        const rect = section.getBoundingClientRect()
-        const distance = Math.abs(rect.top - mainRect.top)
-        if (distance < minDistance) {
-          minDistance = distance
-          closest = i
-        }
+      let minDist = Infinity
+      sections.forEach((s, i) => {
+        const dist = Math.abs(s.getBoundingClientRect().top - main.getBoundingClientRect().top)
+        if (dist < minDist) { minDist = dist; closest = i }
       })
-
       setActive(closest)
     }
 
-    main.addEventListener('scroll', handleScroll, { passive: true })
-    return () => main.removeEventListener('scroll', handleScroll)
-  }, [visible])
+    main.addEventListener('scroll', onScroll, { passive: true })
+    return () => main.removeEventListener('scroll', onScroll)
+  }, [])
 
   const scrollTo = (index: number) => {
     const main = document.querySelector('main')
@@ -48,39 +42,33 @@ export default function PageIndicator() {
 
   return (
     <nav
-      className={`fixed right-4 top-1/2 z-50 -translate-y-1/2 flex-col items-end gap-3 transition-opacity duration-500 md:right-8 ${
-        visible ? 'flex opacity-100' : 'hidden md:flex md:opacity-0'
+      className={`fixed left-1/2 top-6 z-50 -translate-x-1/2 transition-all duration-500 ${
+        visible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
       }`}
     >
-      {labels.map((label, i) => (
-        <button
-          key={label}
-          type="button"
-          onClick={() => scrollTo(i)}
-          className="group flex items-center gap-3"
-          aria-label={`${label} 섹션으로 이동`}
-        >
-          {/* Label — appears on hover */}
-          <span
-            className={`text-[10px] font-medium tracking-wider uppercase transition-all duration-300 ${
-              active === i
-                ? 'text-white/70'
-                : 'translate-x-2 text-transparent group-hover:translate-x-0 group-hover:text-white/40'
-            }`}
-          >
-            {label}
-          </span>
-
-          {/* Dot / bar */}
-          <span
-            className={`block rounded-full transition-all duration-300 ${
-              active === i
-                ? 'h-1.5 w-6 bg-white'
-                : 'h-1.5 w-1.5 bg-white/25 group-hover:bg-white/50'
-            }`}
+      <div className="relative overflow-hidden rounded-full border border-white/10 bg-white/5 backdrop-blur-xl">
+        <div className="flex items-center gap-6 px-6 py-2.5">
+          {navItems.map((item, i) => (
+            <button
+              key={item}
+              type="button"
+              onClick={() => scrollTo(i)}
+              className={`text-xs font-medium transition-colors ${
+                active === i ? 'text-white' : 'text-white/40 hover:text-white/70'
+              }`}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+        {/* Progress bar */}
+        <div className="h-[2px] w-full bg-white/5">
+          <div
+            className="h-full bg-gradient-to-r from-[#7B2FF2] to-[#FF2D78] transition-[width] duration-150"
+            style={{ width: `${scrollProgress * 100}%` }}
           />
-        </button>
-      ))}
+        </div>
+      </div>
     </nav>
   )
 }
