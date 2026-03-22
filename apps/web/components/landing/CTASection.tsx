@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useParallax } from '@/hooks/useParallax'
 
 const serviceLinks = [
   { label: 'Galaxy', href: '/galaxy' },
@@ -44,7 +44,8 @@ function SocialIcon({ path, label }: { path: string; label: string }) {
 }
 
 export default function CTASection() {
-  const sectionRef = useScrollReveal<HTMLElement>()
+  const { ref: sectionRef, progress } = useParallax()
+  const bgY = (progress - 0.5) * 60
 
   const handleScrollToTop = () => {
     const container = document.querySelector('main')
@@ -56,17 +57,22 @@ export default function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-reveal relative flex h-dvh snap-start snap-always flex-col overflow-hidden"
+      className="relative flex h-dvh snap-start snap-always flex-col overflow-hidden"
     >
-      {/* Background Image */}
-      <Image
-        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80"
-        alt="우주에서 본 지구 배경"
-        fill
-        loading="lazy"
-        className="object-cover"
-        sizes="100vw"
-      />
+      {/* Background Image — parallax */}
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translateY(${bgY}px) scale(1.1)` }}
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80"
+          alt="우주에서 본 지구 배경"
+          fill
+          loading="lazy"
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
       {/* Overlay — top lighter, bottom darker for footer readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90" />

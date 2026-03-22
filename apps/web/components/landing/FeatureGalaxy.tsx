@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useParallax } from '@/hooks/useParallax'
 
 const features = [
   { icon: '🪐', label: '인터랙티브 3D 행성 시스템' },
@@ -10,47 +10,50 @@ const features = [
 ]
 
 export default function FeatureGalaxy() {
-  const sectionRef = useScrollReveal<HTMLElement>()
+  const { ref, progress } = useParallax()
+  const bgY = (progress - 0.5) * 60
+  const textY = (progress - 0.5) * -30
 
   return (
     <section
-      ref={sectionRef}
-      className="scroll-reveal relative flex h-dvh snap-start snap-always items-center overflow-hidden"
+      ref={ref}
+      className="relative flex h-dvh snap-start snap-always items-center overflow-hidden"
     >
-      {/* Background Image */}
-      <Image
-        src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=1920&q=80"
-        alt="행성 배경"
-        fill
-        loading="lazy"
-        className="object-cover"
-        sizes="100vw"
-      />
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translateY(${bgY}px) scale(1.1)` }}
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=1920&q=80"
+          alt="행성 배경"
+          fill
+          loading="lazy"
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
-      {/* Gradient Overlay — from LEFT */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 flex w-full max-w-lg flex-col px-6 py-20 sm:px-10 md:px-16 lg:px-24">
-        {/* Badge */}
+      <div
+        className="relative z-10 flex w-full max-w-lg flex-col px-6 py-20 will-change-transform sm:px-10 md:px-16 lg:px-24"
+        style={{ transform: `translateY(${textY}px)` }}
+      >
         <span className="mb-4 inline-block w-fit rounded-full bg-[#7B2FF2]/20 px-4 py-1.5 text-xs font-semibold tracking-wider text-[#7B2FF2] sm:text-sm">
           Galaxy
         </span>
 
-        {/* Title */}
         <h2 className="mb-4 text-3xl font-extrabold leading-tight text-white md:text-5xl">
           나만의 갤럭시를
           <br />
           탐험하세요
         </h2>
 
-        {/* Description */}
         <p className="mb-8 text-base leading-relaxed text-white/70 sm:text-lg">
           좋아하는 아티스트가 태양이 되고, 팬 활동이 행성의 궤도를 만듭니다.
           실시간으로 변화하는 3D 우주에서 팬덤의 에너지를 시각적으로 경험하세요.
         </p>
 
-        {/* Feature Bullets */}
         <ul className="flex flex-col gap-4">
           {features.map((f) => (
             <li key={f.label} className="flex items-center gap-4">

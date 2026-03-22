@@ -2,27 +2,39 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useParallax } from '@/hooks/useParallax'
 
 export default function HeroSection() {
-  const sectionRef = useScrollReveal<HTMLElement>()
+  const { ref, progress } = useParallax()
+
+  // Parallax offsets — different speeds create depth
+  const bgY = (progress - 0.5) * 80          // bg moves slow
+  const textY = (progress - 0.5) * -40        // text moves opposite
+  const phoneY = (progress - 0.5) * -60       // phone moves faster
+  const phoneRotate = 6 + (progress - 0.5) * 4 // subtle rotation shift
+  const opacity = 1 - Math.max(0, (progress - 0.7) * 3.3) // fade out on exit
 
   return (
     <section
-      ref={sectionRef}
-      className="scroll-reveal relative flex h-dvh snap-start snap-always flex-col overflow-hidden"
+      ref={ref}
+      className="relative flex h-dvh snap-start snap-always flex-col overflow-hidden"
     >
-      {/* Background Image */}
-      <Image
-        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&q=80"
-        alt="우주 갤럭시 배경"
-        fill
-        priority
-        className="object-cover"
-        sizes="100vw"
-      />
+      {/* Background Image — parallax slow */}
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translateY(${bgY}px) scale(1.1)` }}
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&q=80"
+          alt="우주 갤럭시 배경"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
-      {/* Heavy overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0a0a0f]" />
 
       {/* Top nav */}
@@ -36,10 +48,13 @@ export default function HeroSection() {
         </Link>
       </div>
 
-      {/* Main content — two columns on desktop */}
+      {/* Main content */}
       <div className="relative z-10 flex flex-1 items-center justify-center gap-12 px-8 xl:gap-20">
-        {/* Left — text */}
-        <div className="max-w-xl">
+        {/* Left — text with parallax */}
+        <div
+          className="max-w-xl will-change-transform"
+          style={{ transform: `translateY(${textY}px)`, opacity }}
+        >
           {/* Eyebrow */}
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-8 bg-[#00D4AA]" />
@@ -85,13 +100,16 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — Tilted phone-style live preview */}
+        {/* Right — Phone with parallax */}
         <div className="hidden lg:block">
-          <div className="relative" style={{ transform: 'rotate(6deg) translateY(10px)' }}>
+          <div
+            className="relative will-change-transform"
+            style={{ transform: `rotate(${phoneRotate}deg) translateY(${phoneY}px)` }}
+          >
             {/* Glow */}
             <div className="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-br from-[#7B2FF2]/20 via-[#EC4899]/10 to-transparent blur-3xl" />
 
-            {/* Phone frame — tall & narrow */}
+            {/* Phone frame */}
             <div className="relative w-[300px] overflow-hidden rounded-[2rem] border-[2px] border-white/10 bg-black shadow-2xl shadow-purple-500/10 xl:w-[320px]">
               {/* Status bar */}
               <div className="flex items-center justify-between bg-black px-5 pb-1 pt-3">
@@ -101,7 +119,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* iframe — tall ratio */}
+              {/* iframe */}
               <iframe
                 src="/galaxy"
                 title="Fandom Galaxy 앱 미리보기"
@@ -116,7 +134,10 @@ export default function HeroSection() {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -left-8 bottom-24 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl" style={{ transform: 'rotate(-6deg)' }}>
+            <div
+              className="absolute -left-8 bottom-24 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl"
+              style={{ transform: `rotate(${-phoneRotate}deg)` }}
+            >
               <p className="text-xs font-semibold text-white">⚡ 3D Galaxy</p>
               <p className="text-[10px] text-white/40">실시간 인터랙티브</p>
             </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useParallax } from '@/hooks/useParallax'
 
 const features = [
   { icon: '📦', label: '캠페인 아카이브' },
@@ -10,47 +10,50 @@ const features = [
 ]
 
 export default function FeatureArchive() {
-  const sectionRef = useScrollReveal<HTMLElement>()
+  const { ref, progress } = useParallax()
+  const bgY = (progress - 0.5) * 60
+  const textY = (progress - 0.5) * -30
 
   return (
     <section
-      ref={sectionRef}
-      className="scroll-reveal relative flex h-dvh snap-start snap-always items-center overflow-hidden"
+      ref={ref}
+      className="relative flex h-dvh snap-start snap-always items-center overflow-hidden"
     >
-      {/* Background Image */}
-      <Image
-        src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=1920&q=80"
-        alt="성운 배경"
-        fill
-        loading="lazy"
-        className="object-cover"
-        sizes="100vw"
-      />
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translateY(${bgY}px) scale(1.1)` }}
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1464802686167-b939a6910659?w=1920&q=80"
+          alt="성운 배경"
+          fill
+          loading="lazy"
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
-      {/* Gradient Overlay — from LEFT */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
 
-      {/* Content — aligned LEFT */}
-      <div className="relative z-10 flex w-full max-w-lg flex-col px-6 py-20 sm:px-10 md:px-16 lg:px-24">
-        {/* Badge */}
+      <div
+        className="relative z-10 flex w-full max-w-lg flex-col px-6 py-20 will-change-transform sm:px-10 md:px-16 lg:px-24"
+        style={{ transform: `translateY(${textY}px)` }}
+      >
         <span className="mb-4 inline-block w-fit rounded-full bg-[#00D4AA]/20 px-4 py-1.5 text-xs font-semibold tracking-wider text-[#00D4AA] sm:text-sm">
           Archive
         </span>
 
-        {/* Title */}
         <h2 className="mb-4 text-3xl font-extrabold leading-tight text-white md:text-5xl">
           팬덤의 역사를
           <br />
           기록하다
         </h2>
 
-        {/* Description */}
         <p className="mb-8 text-base leading-relaxed text-white/70 sm:text-lg">
           응원, 펀딩, 캠페인 — 팬덤의 모든 순간을 아카이브에 담습니다.
           함께 만들어온 기록이 우주의 별이 됩니다.
         </p>
 
-        {/* Feature Bullets */}
         <ul className="flex flex-col gap-4">
           {features.map((f) => (
             <li key={f.label} className="flex items-center gap-4">
