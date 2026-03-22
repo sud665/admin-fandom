@@ -5,7 +5,6 @@ import FeatureArchive from '@/components/landing/FeatureArchive'
 import FeatureCommunity from '@/components/landing/FeatureCommunity'
 import SocialProof from '@/components/landing/SocialProof'
 import CTASection from '@/components/landing/CTASection'
-import Footer from '@/components/landing/Footer'
 
 export default function LandingPage() {
   return (
@@ -17,7 +16,6 @@ export default function LandingPage() {
       <FeatureCommunity />
       <SocialProof />
       <CTASection />
-      <Footer />
     </main>
   )
 }
