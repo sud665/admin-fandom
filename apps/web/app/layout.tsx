@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   description:
     '좋아하는 아티스트를 중심으로 펼쳐지는 시네마틱 갤럭시. 퀘스트를 완수하고, 팬덤의 궤도를 넓혀가세요.',
   manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export const viewport: Viewport = {

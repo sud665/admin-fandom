@@ -22,7 +22,10 @@ export default function HeroSection() {
 
       {/* Top nav */}
       <div className="relative z-10 flex items-center justify-between px-6 pt-8 md:px-12">
-        <p className="text-xs font-semibold tracking-widest text-white/40">FANDOM GALAXY</p>
+        <div className="flex items-center gap-2">
+          <Image src="/logo.svg" alt="Fandom Galaxy" width={28} height={28} className="drop-shadow-[0_0_6px_rgba(168,85,247,0.4)]" />
+          <p className="text-xs font-semibold tracking-widest text-white/40">FANDOM GALAXY</p>
+        </div>
         <Link href="/galaxy" className="text-xs text-white/40 transition-colors hover:text-white/70">로그인</Link>
       </div>
 

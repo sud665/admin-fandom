@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Core gradient: purple → pink → orange -->
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="40%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#7B2FF2"/>
+    </radialGradient>
+    <!-- Glow -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EC4899" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#7B2FF2" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7B2FF2" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Orbit gradient -->
+    <linearGradient id="orbit1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#EC4899" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="orbit2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7B2FF2" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#EC4899" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00D4AA" stop-opacity="0.5"/>
+    </linearGradient>
+    <!-- Star sparkle -->
+    <linearGradient id="sparkle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background glow -->
+  <circle cx="256" cy="256" r="220" fill="url(#glow)"/>
+
+  <!-- Outer orbit ring (tilted ellipse) -->
+  <ellipse cx="256" cy="256" rx="200" ry="80" transform="rotate(-25 256 256)" stroke="url(#orbit1)" stroke-width="2.5" fill="none"/>
+
+  <!-- Inner orbit ring -->
+  <ellipse cx="256" cy="256" rx="140" ry="55" transform="rotate(15 256 256)" stroke="url(#orbit2)" stroke-width="2" fill="none"/>
+
+  <!-- Core star body -->
+  <circle cx="256" cy="256" r="64" fill="url(#core)"/>
+  <!-- Inner bright spot -->
+  <circle cx="248" cy="248" r="28" fill="white" opacity="0.15"/>
+
+  <!-- Orbiting planet 1 (on outer ring) -->
+  <circle cx="410" cy="170" r="14" fill="#A855F7"/>
+  <circle cx="407" cy="167" r="5" fill="white" opacity="0.3"/>
+
+  <!-- Orbiting planet 2 (on inner ring) -->
+  <circle cx="135" cy="290" r="9" fill="#00D4AA"/>
+  <circle cx="133" cy="288" r="3" fill="white" opacity="0.3"/>
+
+  <!-- Star sparkles -->
+  <!-- Top-right sparkle -->
+  <path d="M380 100 L383 90 L386 100 L396 103 L386 106 L383 116 L380 106 L370 103Z" fill="url(#sparkle)" opacity="0.7"/>
+  <!-- Bottom-left sparkle -->
+  <path d="M120 380 L122 373 L124 380 L131 382 L124 384 L122 391 L120 384 L113 382Z" fill="url(#sparkle)" opacity="0.5"/>
+  <!-- Small sparkle -->
+  <path d="M440 300 L441 296 L442 300 L446 301 L442 302 L441 306 L440 302 L436 301Z" fill="white" opacity="0.4"/>
+  <path d="M80 180 L81 176 L82 180 L86 181 L82 182 L81 186 L80 182 L76 181Z" fill="white" opacity="0.3"/>
+</svg>
