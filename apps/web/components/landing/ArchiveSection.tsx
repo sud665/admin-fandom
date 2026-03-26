@@ -29,7 +29,7 @@ export default function ArchiveSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={`relative rounded-xl overflow-hidden transition-all duration-500 cursor-pointer ${
+                className={`relative rounded-xl overflow-hidden transition-all duration-500 cursor-pointer shrink-0 ${
                   isCenter
                     ? 'w-64 h-64 sm:w-80 sm:h-80 z-20 shadow-2xl shadow-orange-900/50 border border-white/20 scale-110'
                     : 'w-40 h-40 sm:w-56 sm:h-56 z-10 opacity-50 hover:opacity-80'
